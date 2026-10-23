@@ -1,0 +1,40 @@
+import { StyleSheet } from 'react-native';
+import globalStyles, { colors } from './globalStyles';
+
+const appStyles = StyleSheet.create({
+  screen: { ...globalStyles.scrollContent },
+  title: { ...globalStyles.title, marginBottom: 7 },
+  subtitle: { ...globalStyles.subtitle, marginBottom: 20 },
+  sectionTitle: { ...globalStyles.sectionTitle, marginBottom: 10 },
+  divider: { ...globalStyles.divider, marginBottom: 16 },
+  announcementCard: { ...globalStyles.card, marginBottom: 14, padding: 17 },
+  announcementTop: { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 },
+  announcementHeader: { color: colors.forest, flex: 1, fontSize: 19, fontWeight: '700' },
+  badge: { backgroundColor: colors.forestLight, borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 },
+  badgeText: { color: colors.white, fontSize: 11, fontWeight: '700' },
+  announcementText: { color: colors.muted, fontSize: 15, lineHeight: 22 },
+  meta: { color: colors.forestLight, fontSize: 13, fontWeight: '700', marginBottom: 9 },
+  primaryButton: { alignItems: 'center', backgroundColor: colors.forest, borderRadius: 9, flexDirection: 'row', justifyContent: 'center', marginBottom: 24, minHeight: 50, paddingHorizontal: 18 },
+  buttonIcon: { marginRight: 8 },
+  primaryButtonText: { color: colors.white, fontSize: 15, fontWeight: '700' },
+  search: { backgroundColor: colors.white, borderColor: colors.border, borderRadius: 9, borderWidth: 1, color: colors.ink, fontSize: 15, marginBottom: 18, paddingHorizontal: 15, paddingVertical: 13 },
+  providerCard: { ...globalStyles.card, marginBottom: 12, padding: 16 },
+  providerHeader: { alignItems: 'center', flexDirection: 'row', marginBottom: 10 },
+  providerIcon: { alignItems: 'center', backgroundColor: colors.forestLight, borderRadius: 20, height: 40, justifyContent: 'center', marginRight: 11, width: 40 },
+  providerName: { color: colors.forest, fontSize: 17, fontWeight: '700' },
+  providerType: { color: colors.muted, fontSize: 13, marginTop: 2 },
+  contactRow: { alignItems: 'center', flexDirection: 'row', marginTop: 6 },
+  contactText: { color: colors.ink, fontSize: 14, marginLeft: 8 },
+  modalOverlay: { backgroundColor: 'rgba(32, 53, 43, 0.42)', flex: 1, justifyContent: 'flex-end' },
+  modal: { backgroundColor: colors.sandLight, borderTopLeftRadius: 18, borderTopRightRadius: 18, padding: 24, paddingBottom: 34 },
+  modalTitle: { color: colors.forest, fontSize: 22, fontWeight: '700', marginBottom: 18 },
+  inputLabel: { color: colors.forest, fontSize: 13, fontWeight: '700', marginBottom: 6, marginTop: 10 },
+  input: { backgroundColor: colors.white, borderColor: colors.border, borderRadius: 8, borderWidth: 1, color: colors.ink, fontSize: 15, padding: 12 },
+  multiline: { minHeight: 84, textAlignVertical: 'top' },
+  modalActions: { flexDirection: 'row', gap: 10, marginTop: 20 },
+  secondaryButton: { alignItems: 'center', borderColor: colors.forest, borderRadius: 9, borderWidth: 1, flex: 1, justifyContent: 'center', minHeight: 48 },
+  secondaryButtonText: { color: colors.forest, fontWeight: '700' },
+  empty: { color: colors.muted, fontSize: 15, paddingVertical: 18, textAlign: 'center' },
+});
+
+export default appStyles;
