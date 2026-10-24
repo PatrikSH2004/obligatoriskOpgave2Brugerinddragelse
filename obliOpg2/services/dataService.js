@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getDocs, getFirestore, onSnapshot } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
 const announcementKey = '@andelsblik/announcements';
@@ -53,12 +53,37 @@ async function loadCollection(collectionName, key, fallback) {
   return readLocal(key, fallback);
 }
 
+function mapDocuments(snapshot) {
+  return snapshot.docs.map((document) => ({ id: document.id, ...document.data() }));
+}
+
+function subscribeToCollection(collectionName, key, fallback, onData, onError) {
+  if (!db) {
+    readLocal(key, fallback).then(onData).catch(onError);
+    return () => {};
+  }
+
+  return onSnapshot(
+    collection(db, collectionName),
+    (snapshot) => onData(snapshot.empty ? fallback : mapDocuments(snapshot)),
+    onError,
+  );
+}
+
 export async function getAnnouncements() {
   return loadCollection('announcements', announcementKey, starterAnnouncements);
 }
 
 export async function getProviders() {
   return loadCollection('providers', providerKey, starterProviders);
+}
+
+export function subscribeToAnnouncements(onData, onError) {
+  return subscribeToCollection('announcements', announcementKey, starterAnnouncements, onData, onError);
+}
+
+export function subscribeToProviders(onData, onError) {
+  return subscribeToCollection('providers', providerKey, starterProviders, onData, onError);
 }
 
 export async function saveItem(collectionName, key, item) {

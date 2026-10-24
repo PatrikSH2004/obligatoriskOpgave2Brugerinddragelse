@@ -1,13 +1,49 @@
 import { StyleSheet } from 'react-native';
-import globalStyles, { colors } from './globalStyles';
+import { Ionicons } from '@expo/vector-icons';
+
+export const colors = {
+  forest: '#234d3c',
+  forestLight: '#3f765c',
+  forestPressed: '#2f634b',
+  sand: '#e8d7b5',
+  sandLight: '#f7f1e4',
+  sandDark: '#cdbb96',
+  ink: '#20352b',
+  muted: '#66766b',
+  white: '#ffffff',
+  border: '#d9cbaa',
+  error: '#B42318',
+};
+
+export const uiValues = {
+  iconButton: 20,
+  iconProvider: 20,
+  iconContact: 16,
+  statusBar: 'light',
+};
+
+export function getNavigationOptions({ route }) {
+  return {
+    headerStyle: appStyles.header,
+    headerTintColor: colors.white,
+    headerTitleStyle: appStyles.headerTitle,
+    tabBarActiveTintColor: colors.forest,
+    tabBarInactiveTintColor: colors.muted,
+    tabBarStyle: appStyles.tabBar,
+    tabBarLabelStyle: appStyles.tabBarLabel,
+    tabBarIcon: ({ color, size }) => (
+      <Ionicons name={route.name === 'Opslagstavle' ? 'megaphone-outline' : 'construct-outline'} color={color} size={size} />
+    ),
+  };
+}
 
 const appStyles = StyleSheet.create({
-  screen: { ...globalStyles.scrollContent },
-  title: { ...globalStyles.title, marginBottom: 7 },
-  subtitle: { ...globalStyles.subtitle, marginBottom: 20 },
-  sectionTitle: { ...globalStyles.sectionTitle, marginBottom: 10 },
-  divider: { ...globalStyles.divider, marginBottom: 16 },
-  announcementCard: { ...globalStyles.card, marginBottom: 14, padding: 17 },
+  screen: { backgroundColor: colors.sandLight, padding: 24, paddingBottom: 36, paddingTop: 28 },
+  title: { color: colors.forest, fontSize: 28, fontWeight: '700', marginBottom: 7 },
+  subtitle: { color: colors.muted, fontSize: 15, lineHeight: 22, marginBottom: 20 },
+  sectionTitle: { color: colors.forest, fontSize: 17, fontWeight: '700', marginBottom: 10 },
+  divider: { backgroundColor: colors.sandDark, height: 1, marginBottom: 16, width: '100%' },
+  announcementCard: { backgroundColor: colors.sand, borderColor: colors.border, borderRadius: 10, borderWidth: 1, marginBottom: 14, padding: 17 },
   announcementTop: { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 },
   announcementHeader: { color: colors.forest, flex: 1, fontSize: 19, fontWeight: '700' },
   badge: { backgroundColor: colors.forestLight, borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 },
@@ -15,10 +51,13 @@ const appStyles = StyleSheet.create({
   announcementText: { color: colors.muted, fontSize: 15, lineHeight: 22 },
   meta: { color: colors.forestLight, fontSize: 13, fontWeight: '700', marginBottom: 9 },
   primaryButton: { alignItems: 'center', backgroundColor: colors.forest, borderRadius: 9, flexDirection: 'row', justifyContent: 'center', marginBottom: 24, minHeight: 50, paddingHorizontal: 18 },
+  primaryButtonPressed: { backgroundColor: colors.forestPressed },
+  modalPrimaryButton: { flex: 1, marginBottom: 0 },
+  savingButton: { opacity: 0.6 },
   buttonIcon: { marginRight: 8 },
   primaryButtonText: { color: colors.white, fontSize: 15, fontWeight: '700' },
   search: { backgroundColor: colors.white, borderColor: colors.border, borderRadius: 9, borderWidth: 1, color: colors.ink, fontSize: 15, marginBottom: 18, paddingHorizontal: 15, paddingVertical: 13 },
-  providerCard: { ...globalStyles.card, marginBottom: 12, padding: 16 },
+  providerCard: { backgroundColor: colors.sand, borderColor: colors.border, borderRadius: 10, borderWidth: 1, marginBottom: 12, padding: 16 },
   providerHeader: { alignItems: 'center', flexDirection: 'row', marginBottom: 10 },
   providerIcon: { alignItems: 'center', backgroundColor: colors.forestLight, borderRadius: 20, height: 40, justifyContent: 'center', marginRight: 11, width: 40 },
   providerName: { color: colors.forest, fontSize: 17, fontWeight: '700' },
@@ -35,6 +74,11 @@ const appStyles = StyleSheet.create({
   secondaryButton: { alignItems: 'center', borderColor: colors.forest, borderRadius: 9, borderWidth: 1, flex: 1, justifyContent: 'center', minHeight: 48 },
   secondaryButtonText: { color: colors.forest, fontWeight: '700' },
   empty: { color: colors.muted, fontSize: 15, paddingVertical: 18, textAlign: 'center' },
+  error: { color: colors.error, fontSize: 14, paddingVertical: 12, textAlign: 'center' },
+  header: { backgroundColor: colors.forest },
+  headerTitle: { fontWeight: '700' },
+  tabBar: { backgroundColor: colors.sandLight, borderTopColor: colors.border, height: 72, paddingBottom: 10, paddingTop: 8 },
+  tabBarLabel: { fontSize: 12, fontWeight: '700' },
 });
 
 export default appStyles;
