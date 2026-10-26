@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export const colors = {
+  // Fælles farvepalette for appens rolige og genkendelige udtryk.
   forest: '#234d3c',
   forestLight: '#3f765c',
   forestPressed: '#2f634b',
@@ -16,12 +17,14 @@ export const colors = {
 };
 
 export const uiValues = {
+  // Fælles størrelser for ikoner og systemets statuslinje.
   iconButton: 20,
   iconProvider: 20,
   iconContact: 16,
   statusBar: 'light',
 };
 
+// Returnerer de fælles indstillinger, som bruges af fanenavigationen.
 export function getNavigationOptions({ route }) {
   return {
     headerStyle: appStyles.header,
@@ -31,6 +34,7 @@ export function getNavigationOptions({ route }) {
     tabBarInactiveTintColor: colors.muted,
     tabBarStyle: appStyles.tabBar,
     tabBarLabelStyle: appStyles.tabBarLabel,
+    // Vælger et ikon ud fra den aktive fane.
     tabBarIcon: ({ color, size }) => (
       <Ionicons name={route.name === 'Opslagstavle' ? 'megaphone-outline' : 'construct-outline'} color={color} size={size} />
     ),
@@ -38,6 +42,8 @@ export function getNavigationOptions({ route }) {
 }
 
 const appStyles = StyleSheet.create({
+  // Genbrugelige styles for skærme, kort, knapper, formularer og navigation.
+  // Layoutet bruger appens farvepalette, så udtrykket er ens på alle skærme.
   screen: { backgroundColor: colors.sandLight, padding: 24, paddingBottom: 36, paddingTop: 28 },
   title: { color: colors.forest, fontSize: 28, fontWeight: '700', marginBottom: 7 },
   subtitle: { color: colors.muted, fontSize: 15, lineHeight: 22, marginBottom: 20 },
